@@ -1,5 +1,5 @@
 # My dotfiles
 
-What does each file configure?
+What does each file configure (if not obvious)?
 
 - `config.py` is for qutebrowser 
