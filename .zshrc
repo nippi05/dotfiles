@@ -104,3 +104,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias grep="rg"
 alias vi="nvim"
+alias dotfiles="cd ~/dotfiles"
