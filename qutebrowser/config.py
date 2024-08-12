@@ -141,3 +141,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 c.url.searchengines = {
         'DEFAULT': 'https://google.com/search?q={}'
      }
+
+c.url.default_page = 'https://en.wikipedia.org/wiki'
+
+
