@@ -105,3 +105,4 @@ source $ZSH/oh-my-zsh.sh
 alias grep="rg"
 alias vi="nvim"
 alias dotfiles="cd ~/dotfiles"
+alias qtb="qutebrowser &> /dev/null &"
