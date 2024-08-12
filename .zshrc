@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -107,4 +107,5 @@ alias vi="nvim"
 alias dotfiles="cd ~/dotfiles"
 alias qtb="qutebrowser &> /dev/null &"
 alias repos="cd ~/src/repos"
-alias fixkeys="swaymsg input type:keyboard xkb_layout "se"
+alias fixkeys='swaymsg input type:keyboard xkb_layout "se"'
+alias pretty-paths="echo $PATH | sed 's/:/\n/g'"
