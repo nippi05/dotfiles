@@ -143,5 +143,5 @@ c.url.searchengines = {
      }
 
 c.url.default_page = 'https://en.wikipedia.org/wiki'
-
+c.url.start_pages = 'https://en.wikipedia.org/wiki'
 
