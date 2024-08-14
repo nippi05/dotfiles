@@ -208,6 +208,9 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# Capture all screens to clipboard
+bindsym $mod+p exec grim - | wl-copy
+
 #
 # Status Bar:
 #
