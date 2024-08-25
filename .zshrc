@@ -121,6 +121,7 @@ alias pretty-paths="echo $PATH | sed 's/:/\n/g'"
 alias update="sudo apt update && sudo apt upgrade && sudo apt dist-upgrade"
 alias notes="QOwnNotes &> /dev/null &"
 alias medicin="cd ~/Documents/notes/Universitet/Medicin/"
+alias rm="trash"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
