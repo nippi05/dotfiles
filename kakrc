@@ -1,50 +1,33 @@
-def -params 1 -docstring "colorscheme <name>: enable named colorscheme" \
-    -shell-script-candidates %{
-    find -L "${kak_runtime}/colors" "${kak_config}/colors" -type f -name '*\.kak' \
-        | while read -r filename; do
-            basename="${filename##*/}"
-            printf %s\\n "${basename%.*}"
-        done | sort -u
-  } \
-  colorscheme %{ evaluate-commands %sh{
-    find_colorscheme() {
-        find -L "${1}" -type f -name "${2}".kak | head -n 1
-    }
+# Set the colour scheme
+colorscheme one-dark
 
-    filename=""
-    if [ -d "${kak_config}/colors" ]; then
-        filename=$(find_colorscheme "${kak_config}/colors" "${1}")
-    fi
-    if [ -z "${filename}" ]; then
-        filename=$(find_colorscheme "${kak_runtime}/colors" "${1}")
-    fi
+# Width of a tab
+set-option global tabstop 3
 
-    if [ -n "${filename}" ]; then
-        printf 'source %%{%s}' "${filename}"
-    else
-        echo "fail 'No such colorscheme ${1}.kak'"
-    fi
-}}
+# Indent with 4 spaces
+set-option global indentwidth 4
 
-evaluate-commands %sh{
-    autoload_directory() {
-        find -L "$1" -type f -name '*\.kak' \
-            | sed 's/.*/try %{ source "&" } catch %{ echo -debug Autoload: could not load "&" }/'
-    }
+# Always keep one line and three columns displayed around the cursor
+set-option global scrolloff 3,3
 
-    echo "colorscheme default"
+# Display the status bar on top
+set-option global ui_options ncurses_status_on_top=true
 
-    if [ -d "${kak_config}/autoload" ]; then
-        autoload_directory ${kak_config}/autoload
-    elif [ -d "${kak_runtime}/autoload" ]; then
-        autoload_directory ${kak_runtime}/autoload
-    fi
+# Display line numbers
+add-highlighter global/ number-lines -hlcursor
 
-    if [ -f "${kak_runtime}/kakrc.local" ]; then
-        echo "source '${kak_runtime}/kakrc.local'"
-    fi
+# Highlight trailing whitespace
+add-highlighter global/ regex \h+$ 0:Error
 
-    if [ -f "${kak_config}/kakrc" ]; then
-        echo "source '${kak_config}/kakrc'"
-    fi
-}
+# Softwrap long lines
+add-highlighter global/ wrap -word -indent
+
+# Clipboard management mappings
+map -docstring "yank the selection into the clipboard" global user y "<a-|> wl-copy<ret>"
+map -docstring "paste the clipboard" global user p "<a-!> wl-paste<ret>"
+
+# Shortcut to quickly exit the editor
+define-command -docstring "save and quit" x "write-all; quit"
+
+# kakoune-table
+map global user t ": evaluate-commands -draft table-align<ret>"
