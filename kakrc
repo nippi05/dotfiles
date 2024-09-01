@@ -1,3 +1,4 @@
+
 # Set the colour scheme
 colorscheme one-dark
 
@@ -30,4 +31,13 @@ map -docstring "paste the clipboard" global user p "<a-!> wl-paste<ret>"
 define-command -docstring "save and quit" x "write-all; quit"
 
 # kakoune-table
-map global user t ": evaluate-commands -draft table-align<ret>"
+map global user t ": evaluate-commands -draft table-align<ret>" -docstring "align the hovered table"
+map global user T ": evaluate-commands -draft table-toggle<ret>" -docstring "toggle table user mode"
+
+# kak-lsp
+eval %sh{kak-lsp --kakoune}  # Not needed if you load it with plug.kak.
+hook global WinSetOption filetype=(c|cpp|md|zig) %{
+    lsp-enable-window
+}
+
+
