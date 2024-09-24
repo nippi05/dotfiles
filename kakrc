@@ -1,4 +1,3 @@
-
 # Set the colour scheme
 colorscheme one-dark
 
@@ -35,9 +34,9 @@ map global user t ": evaluate-commands -draft table-align<ret>" -docstring "alig
 map global user T ": evaluate-commands -draft table-toggle<ret>" -docstring "toggle table user mode"
 
 # kak-lsp
-eval %sh{kak-lsp --kakoune}  # Not needed if you load it with plug.kak.
-hook global WinSetOption filetype=(c|cpp|md|zig) %{
+eval %sh{kak-lsp --kakoune --session "$kak_session"}  # Not needed if you load it with plug.kak.
+hook global WinSetOption filetype=(zig|markdown|rust|python|go|javascript|typescript|c|cpp) %{
     lsp-enable-window
 }
 
-
+enable-auto-pairs
