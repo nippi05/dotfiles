@@ -1,6 +1,6 @@
 input * {
 	xkb_layout "se"
-	xkb_variant "basic"
+    	xkb_variant "colemak-dhk"
 }
 # Default config for sway
 #

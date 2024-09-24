@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/games:/usr/local/games:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/games:/usr/local/games:$PATH:/usr/local/go/bin:$HOME/go/bin
 # Remove duplicates
 export PATH="$(printf "%s:" $(echo "${PATH}" | tr ':' '\n' | sort -u) )"
 
@@ -125,6 +125,9 @@ alias rm="trash"
 alias code="codium"
 alias lg="lazygit"
 alias bat="batcat"
+alias pip="pip3"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
